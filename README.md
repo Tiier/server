@@ -1,2 +1,2 @@
-# server
+# Tiier Server
 The server and backend API for Tiier
