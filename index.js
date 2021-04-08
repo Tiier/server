@@ -1,8 +1,10 @@
 const swagger = require('fastify-swagger')
 const cors = require('fastify-cors')
 const limit = require('fastify-rate-limit')
-const helmet = require('fastify-helmet')
+// const helmet = require('fastify-helmet')
 const cookie = require('fastify-cookie')
+
+const api = require('./routes/api')
 
 async function buildServer (app, _) {
   app
@@ -11,12 +13,10 @@ async function buildServer (app, _) {
       max: 100,
       timeWindow: '1 minute'
     })
-    .register(helmet)
+    // .register(helmet)
     .register(cors, {
-      methods: ['GET', 'PUT', 'POST'],
-      allowedHeaders: ['Origin', 'X-PINGOTHER', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
-      credentials: true,
-      origin: true
+      methods: ['GET', 'PUT', 'POST', 'DELETE'],
+      allowedHeaders: ['Origin', 'X-PINGOTHER', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
     })
     .register(swagger, {
       routePrefix: '/docs',
@@ -28,7 +28,7 @@ async function buildServer (app, _) {
           version: '0.1.0'
         },
         host: 'localhost',
-        schemes: ['https'],
+        schemes: ['http'],
         consumes: ['application/json'],
         produces: ['application/json'],
         tags: [
@@ -36,6 +36,7 @@ async function buildServer (app, _) {
         ]
       }
     })
+    .register(api, { prefix: '/api' })
     .ready().then(() => {
       app.swagger()
       app.log.info(`
