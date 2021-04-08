@@ -28,7 +28,7 @@ async function buildServer (app, _) {
           version: '0.1.0'
         },
         host: 'localhost',
-        schemes: ['http'],
+        schemes: ['https'],
         consumes: ['application/json'],
         produces: ['application/json'],
         tags: [
