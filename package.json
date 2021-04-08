@@ -1,0 +1,38 @@
+{
+  "name": "tiier-server",
+  "version": "0.1.0",
+  "description": "This is the Node.js backend for Tiier",
+  "main": "index.js",
+  "scripts": {
+    "dev": "fastify start --log-level=info --watch --pretty-logs index.js",
+    "lint": "standard --fix **/*.js | snazzy",
+    "start": "fastify start index.js",
+    "test": "tape tests/*.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tiier/server.git"
+  },
+  "keywords": [
+    "tiier",
+    "game",
+    "server",
+    "rpg"
+  ],
+  "author": "Dustin Hershman<dustinh17@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tiier/server/issues"
+  },
+  "homepage": "https://github.com/Tiier/server#readme",
+  "dependencies": {
+    "fastify": "^3.14.2",
+    "fastify-cli": "^2.9.1"
+  },
+  "devDependencies": {
+    "snazzy": "^9.0.0",
+    "standard": "^16.0.3",
+    "tap-spec": "^5.0.0",
+    "tape": "^5.2.2"
+  }
+}
