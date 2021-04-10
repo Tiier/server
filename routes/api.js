@@ -29,7 +29,16 @@ module.exports = async function (app, _) {
               OK: { type: 'boolean', example: true }
             }
           }
-        })
+        }),
+        params: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'string',
+              description: 'Character ID for the player'
+            }
+          }
+        }
       },
       handler (req, reply) {
         reply.send({ OK: true })
